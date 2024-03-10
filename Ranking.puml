@@ -1,0 +1,66 @@
+@startuml
+title ランキングシステム
+package "DataHolder"
+{
+    class SomeClass
+    {
+    }
+    note left : ゲーム内の\nデータを保有するクラス
+    
+    class SomeData
+    {
+    }
+    note left : ゲーム内のデータ 
+    
+    interface IRankingDataElement
+    {
+        
+    }
+    
+    interface IRankingDataHolder
+    {
+        
+    }
+}
+
+package "Storage"
+{
+    class RankingStorage
+    {
+        {static} RankingStorage instance
+        + void Initialize()
+    }
+    interface IRankingStorage
+    {
+        + void UpdateData()
+    }
+}
+
+
+class RankingData
+{
+    
+}
+
+class RankingElementTypeDataBase
+{
+    
+}
+
+
+
+
+
+'実装関係'
+IRankingDataHolder <|-- SomeClass
+IRankingDataElement <|-- SomeData
+IRankingStorage <|-- RankingStorage
+
+'依存関係'
+IRankingStorage <--"Send" SomeClass
+SomeClass -->"保持" SomeData
+RankingStorage -->"保持" RankingData
+RankingElementTypeDataBase -->"生成" RankingData
+RankingStorage -->"生成依頼" RankingElementTypeDataBase
+
+@enduml
