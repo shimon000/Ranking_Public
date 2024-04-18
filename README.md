@@ -1,5 +1,9 @@
 # Ranking
-unityで使用できるランキングシステムを公開するためのレポジトリです。ランキングシステムのソースコードはAssets/Ranking/Scriptsから、デモシーンのソースコードはAssets/Ranking/Demo/Scriptsから確認できます。
+unityで使用できるランキングシステムを公開するためのレポジトリです。
+
+ランキングシステムのソースコードはAssets/Ranking/Scriptsから、
+
+デモシーンのソースコードはAssets/Ranking/Demo/Scriptsから確認できます。
 # 実行ファイルのダウンロード
 デモゲームの実行ファイルはReleaseからダウンロードできます。
 # 実行環境
