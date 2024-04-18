@@ -1,0 +1,5 @@
+このディレクトリ以下のファイルはこちらのコードを参照しています
+[紹介Webページ]
+https://kan-kikuchi.hatenablog.com/entry/PersistentAmongPlayModeAttribute
+[Github]
+https://gist.github.com/kankikuchi/08dd7139265d81152bde1e4b6e74ad68

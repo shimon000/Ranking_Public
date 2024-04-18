@@ -1,0 +1,101 @@
+@startuml
+title ランキングシステム
+
+class RankingConfig
+{
+    + CreateRankingData()
+    + CreateAllRankingDataDictionary()
+}
+note right : ランキングの設定を\n保持するクラス
+
+enum RankingName{}
+
+package "DataHolder"
+{
+    class SomeClass
+    {
+        - SomeData myData
+    }
+    note right : ゲーム内の\nデータを保有するクラス
+    
+    class SomeData
+    {
+    }
+    note left : ゲーム内のデータ 
+    
+    interface IRankingDataElement
+    {
+        
+    }
+    
+    interface IRankingDataHolder
+    {
+        
+    }
+}
+
+package "Storage"
+{
+    class RankingStorage
+    {
+        + {static} RankingStorage Instance
+        - Dictionary<RankingName,RankingData> _rankingDataDictionary
+        + void InitializeData()
+        + void UpdateData<T>()
+        + T GetData<T>()
+        + void Register()
+    }
+    interface IRankingStorage
+    {
+        + void InitializeData()
+        + void UpdateData<T>()
+        + T GetData<T>()
+        + void Register()
+    }
+}
+
+
+class RankingData
+{
+    - Dictionary<Type, object> _dataDictionary
+    + {static} RankingData GenerateRankingDataWithDictionary()
+    + {static} RankingData GenerateRankingDataWithoutDictionary()
+    + void UpdateData<T>()
+    + T GetData<T>()
+}
+
+class PlayfabManager
+{
+    + {static} Action omCompleteLogin
+    + {static} Action onFailedLogin
+    + {static} Action onCompleteRegister
+    + {static} Action onFailedRegister
+    + {static} Action onCompleteGetLeaderBoard
+    + {static} Action onFailedGetLeaderBoard
+    + {static} void Login()
+    + {static} void RegisterRankingData(RankingData)
+    + {static} RankingData[] GetLeaderboardAsync(int,RankingName)
+}
+
+
+
+
+'実装関係'
+IRankingDataHolder <|-- SomeClass
+IRankingDataElement <|-- SomeData
+IRankingStorage <|-- RankingStorage
+
+'依存関係'
+IRankingStorage <--"Send         " SomeClass
+SomeClass -->"保持" SomeData
+RankingStorage -->"保持" RankingData
+RankingConfig -->"生成" RankingData
+RankingStorage --up>"生成依頼" RankingConfig
+
+'位置関係'
+Storage -[hidden]up- RankingConfig
+Storage -[hidden]up- RankingData
+RankingConfig -[hidden]left- RankingData
+
+
+@enduml

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe8bae263d94817bdbc2cafbbb63aa4, type: 3}
+  m_Name: RankingDefaultConfig
+  m_EditorClassIdentifier: 
+  _rankingData:
+  - _name: 0
+    _monoScript:
+    - {fileID: 11500000, guid: 0c390742100742adaca7c6cea092284c, type: 3}
+    - {fileID: 11500000, guid: 8e26cac5fe894599bceac9852ad4a89a, type: 3}
+    _elementName:
+    - Ranking.Scripts.Score
+    - Ranking.Scripts.PlayerName
