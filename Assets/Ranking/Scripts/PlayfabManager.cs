@@ -62,6 +62,13 @@ public class PlayFabManager
 
     public static void RegisterRankingData(RankingData data,RankingName name)
     {
+        //ログインしているか確認
+        if (!PlayFabClientAPI.IsClientLoggedIn())
+        {
+            onFailedRegister?.Invoke();
+            return;
+        }
+        
         var scoreData = data.GetData<Score>();
         var nameData = data.GetData<PlayerName>();
         
@@ -175,6 +182,13 @@ public class PlayFabManager
             MaxResultsCount = _maxResultCount              //ランキングデータを何件取得するか(最大100)
         };
 
+        //ログインしているか確認
+        if (!PlayFabClientAPI.IsClientLoggedIn())
+        {
+            onFailedGetLeaderBoard?.Invoke();
+            return null;
+        }
+        
         //ランキング(リーダーボード)を取得
         $"ランキング(リーダーボード)の取得開始".RankingLog();
         PlayFabClientAPI.GetLeaderboard
